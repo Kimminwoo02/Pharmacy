@@ -17,6 +17,10 @@ configurations {
     }
 }
 
+bootJar{
+    archiveFileName = 'app.jar'
+}
+
 repositories {
     mavenCentral()
 }
@@ -34,3 +38,4 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
