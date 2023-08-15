@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  pharmacy-redis:
+    container_name: pharmacy-redis
+    build:
+      dockerfile: Dockerfile
+      context: ./redis
+    image: minutaurus/pharmacy-redis
+    ports:
+      - "6379:6379"
+
+  pharmacy-database:
+    container_name: pharmacy-database
+    build:
+      dockerfile: Dockerfile
+      context: ./database
+    image: minutaurus/pharmacy-database
+    environment:
+      - MYSQL_DATABASE=pharmacy
+      - MYSQL_ROOT_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
+    volumes:
+      - ./database/config:/etc/mysql/conf.d # 도커의 디렉토리가(etc/mysql/conf.d) 로컬 config를 참조
+    ports:
+      - "3307:3307"
