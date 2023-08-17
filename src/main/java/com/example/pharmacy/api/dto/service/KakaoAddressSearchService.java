@@ -1,4 +1,4 @@
-package com.example.pharmacy.api.service;
+package com.example.pharmacy.api.dto.service;
 
 import com.example.pharmacy.api.dto.KakaoApiResponseDto;
 import lombok.RequiredArgsConstructor;
