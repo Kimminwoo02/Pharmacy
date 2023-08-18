@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Objects;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -16,6 +18,12 @@ public class PharmacyRepositoryService {
     @Transactional
     public void updateAddress(Long id,  String address){
         Pharmacy entity = pharmacyRepository.findById(id).orElse(null);
+
+        if(Objects.isNull(entity)){
+            log.error("[PharmacyRepositoryService updateAddress] Not found id:{}");
+            return;
+        }
+        entity.changePharmacyAddress(address);
     }
 
 }
