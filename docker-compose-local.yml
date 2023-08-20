@@ -20,5 +20,6 @@ services:
       - MYSQL_ROOT_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
     volumes:
       - ./database/config:/etc/mysql/conf.d # 도커의 디렉토리가(etc/mysql/conf.d) 로컬 config를 참조
+      - ./database/init:/docker-entrypoint-initdb.d
     ports:
       - "3307:3307"
